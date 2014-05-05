@@ -1,7 +1,7 @@
 {
-    "name": "ShareLoc_API",
+    "name": "sharelocapi",
     "private": true,
-    "version": "0.0.0-4",
+    "version": "0.0.0-16",
     "description": "a Sails application",
     "dependencies": {
         "sails": "0.9.16",
@@ -21,7 +21,7 @@
     "repository": "",
     "author": "",
     "license": "",
-    "subdomain": "ShareLoc_API",
+    "subdomain": "sharelocapi",
     "engines": {
         "node": "0.10.x"
     }

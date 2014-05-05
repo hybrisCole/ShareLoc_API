@@ -15,9 +15,25 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
+var passport = require("passport");
 module.exports = {
-    
-  
+
+  facebook:function(req,res){
+    passport.authenticate('facebook', { failureRedirect: '/login', scope: ['email,user_friends'] },
+      function (err, user) {
+        req.logIn(user, function (err) {
+          if (err) {
+            console.log(err);
+            res.json(err);
+            return;
+          }
+          res.json(user);
+          return;
+        });
+      })(req, res);
+  },
+
+
 
 
   /**

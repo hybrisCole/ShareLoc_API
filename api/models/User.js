@@ -8,12 +8,13 @@
 
 module.exports = {
 
-  attributes: {
-  	
-  	/* e.g.
-  	nickname: 'string'
-  	*/
-    
+  attributes	: {
+    provider: 'STRING',
+    uid: 'INTEGER',
+    name: 'STRING',
+    email: 'STRING',
+    firstname: 'STRING',
+    lastname: 'STRING'
   }
 
 };
