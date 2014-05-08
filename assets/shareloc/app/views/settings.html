@@ -1,0 +1,25 @@
+<div class="pure-g">
+  <div class="pure-u-1">
+    <form class="pure-form pure-form-stacked form-preferencias">
+      <fieldset>
+        <legend>Preferencias de Usuario</legend>
+
+        <label for="nombre">Nombre</label>
+        <input ng-model="usuario.nombre" id="nombre" type="text" placeholder="Nombre">
+
+        <label for="apellidos">Apellidos</label>
+        <input ng-model="usuario.apellidos" id="apellidos" type="text"
+               placeholder="Apellidos">
+
+        <label for="email">Email</label>
+        <input ng-model="usuario.email" id="email" type="email" placeholder="Email">
+
+        <label for="edad">Edad</label>
+        <input ng-model="usuario.edad" id="edad" type="text" placeholder="Edad">
+
+        <button ng-click="guardarPreferencias()" type="submit"
+                class="pure-button pure-button-primary">Guardar Informacion</button>
+      </fieldset>
+    </form>
+  </div>
+</div>

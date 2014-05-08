@@ -9,12 +9,11 @@
 module.exports = {
 
   attributes	: {
-    provider: 'STRING',
     uid: 'INTEGER',
-    name: 'STRING',
+    nombre: 'STRING',
     email: 'STRING',
-    firstname: 'STRING',
-    lastname: 'STRING'
+    apellidos: 'STRING',
+    edad: 'STRING'
   }
 
 };
