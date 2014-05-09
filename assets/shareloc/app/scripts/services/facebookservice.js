@@ -7,7 +7,7 @@ angular.module('shareLocApp')
         friends;
 
     FB.init({
-      appId: 1421234394814732,
+      appId: 1415947262014338,
       status: false,
       cookie: true,
       xfbml: true
@@ -17,7 +17,7 @@ angular.module('shareLocApp')
         var deferred = $q.defer();
         FB.login(function(response) {
           deferred.resolve(response);
-        }, {scope: 'email,user_friends,read_friendlists'});
+        }, {scope: 'email,public_profile,user_friends'});
         return deferred.promise;
       },
       getUserId: function(){
@@ -26,27 +26,17 @@ angular.module('shareLocApp')
       setUserId: function(userIdParam){
         userId = userIdParam;
       },
-      friends: function(userId){
+      friends: function(){
         var deferred = $q.defer();
         FB.api(
-          "/10152474224230739/friendlists",
+          '/'+userId+'/friends',
           function (response) {
             if (response && !response.error) {
-              angular.forEach(response.data,function(value){
-                console.log();
-                FB.api(
-                  "/"+value.id+"/members",
-                  function (response) {
-                    if (response && !response.error) {
-                      console.log('members');
-                      console.log(response);
-                    }
-                  }
-                );
-              });
+              deferred.resolve(response);
             }
           }
         );
+        return deferred.promise;
       }
     };
   });

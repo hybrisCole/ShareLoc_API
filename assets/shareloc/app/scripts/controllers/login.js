@@ -4,6 +4,7 @@ angular.module('shareLocApp')
   .controller('LoginCtrl', function ($scope,facebookservice,settingsservice) {
     $scope.facebookLogin = function(){
       facebookservice.login().then(function(response){
+        console.log('facebookservice.login');
         console.log(response);
         if(response.authResponse){
           facebookservice.setUserId(response.authResponse.userID);
