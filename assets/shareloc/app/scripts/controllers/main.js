@@ -3,6 +3,10 @@
 angular.module('shareLocApp')
   .controller('MainCtrl', function ($scope,$window,$rootScope,Coordenadaservice) {
     var shareLocMap;
+
+    $scope.crearMarca = false;
+    $scope.borrarMarca = false;
+
     var marcaFuncion = function(ev){
       if($scope.borrarMarca){
         var length = shareLocMap.markers.length,
@@ -22,8 +26,6 @@ angular.module('shareLocApp')
         });
       }
     };
-    $scope.crearMarca = false;
-    $scope.borrarMarca = false;
     $scope.marcar = function(){
       $scope.crearMarca = true;
     };
