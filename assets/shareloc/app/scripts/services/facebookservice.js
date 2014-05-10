@@ -13,14 +13,16 @@ angular.module('shareLocApp')
       xfbml: true
     });
 
-    /*FB.Event.subscribe('auth.statusChange', function(response) {
+    FB.Event.subscribe('auth.statusChange', function(response) {
       console.log('FB.Event.subscribe');
       console.log(response);
       if(response.status == 'connected'){
         userId = response.authResponse.userID;
-        $location.path('/main');
+        $rootScope.$apply(function(){
+          $location.path('/main');
+        });
       }
-    });*/
+    });
 
     FB.getLoginStatus(function(response) {
       if(response.status == 'connected'){
