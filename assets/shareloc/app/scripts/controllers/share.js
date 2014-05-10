@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('shareLocApp')
-  .controller('ShareCtrl', function ($scope) {
-    
+  .controller('ShareCtrl', function ($scope, facebookservice) {
+
   });

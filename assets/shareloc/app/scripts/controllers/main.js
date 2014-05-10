@@ -13,7 +13,9 @@ angular.module('shareLocApp')
         });
       }
       if($scope.enviarMarca){
-        $location.path('/share');
+        $rootScope.$apply(function(){
+          $location.path('/share');
+        });
       }
     };
 
