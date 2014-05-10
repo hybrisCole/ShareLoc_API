@@ -18,6 +18,7 @@ angular.module('shareLocApp')
             });
           });
         }else{
+          console.log('ERROR: dude you got no geoloc!'+ JSON.stringify(error));
           defer.resolve(defaultCoord);
         }
         return defer.promise;

@@ -1,40 +1,45 @@
 'use strict';
 
 angular.module('shareLocApp')
-  .controller('MainCtrl', function ($scope,$window,$rootScope,Coordenadaservice) {
-    var shareLocMap;
+  .controller('MainCtrl', function ($scope,$window,$rootScope,$location,Coordenadaservice) {
 
-    $scope.crearMarca = false;
-    $scope.borrarMarca = false;
-
-    var marcaFuncion = function(ev){
+    var shareLocMap,
+        marcaFuncion = function(marker){
       if($scope.borrarMarca){
-        var length = shareLocMap.markers.length,
-          elemToRemove = -1,
-          i = 0;
-
-        while(i<length){
-          if(ev.__gm_id === shareLocMap.markers[i].__gm_id){
-            elemToRemove = shareLocMap.markers[i];
-          }
-          i++;
-        }
-        shareLocMap.removeMarkers([elemToRemove]);
+        shareLocMap.removeMarker(marker);
 
         $rootScope.$apply(function(){
           $scope.borrarMarca = false;
         });
       }
+      if($scope.enviarMarca){
+        $location.path('/share');
+      }
     };
+
+    $scope.crearMarca = false;
+    $scope.borrarMarca = false;
+    $scope.enviarMarca = false;
+
     $scope.marcar = function(){
-      $scope.crearMarca = true;
+      $scope.crearMarca = !$scope.crearMarca;
+      $scope.borrarMarca = false;
+      $scope.enviarMarca = false;
     };
 
     $scope.desmarcar = function(){
-      $scope.borrarMarca = true;
+      $scope.crearMarca = false;
+      $scope.borrarMarca = !$scope.borrarMarca;
+      $scope.enviarMarca = false;
     };
 
-    $('#share-loc-map').height($window.innerHeight-100);
+    $scope.enviar = function(){
+      $scope.crearMarca = false;
+      $scope.borrarMarca = false;
+      $scope.enviarMarca = !$scope.enviarMarca;
+    };
+
+    $('#share-loc-map').height($window.innerHeight-111);
     Coordenadaservice.getUserPosition().then(function(position){
       shareLocMap = new GMaps({
         div: '#share-loc-map',
