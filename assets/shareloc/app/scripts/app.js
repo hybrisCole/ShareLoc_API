@@ -5,7 +5,9 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'angular-gestures',
+    'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -25,6 +27,10 @@ angular
         templateUrl: 'views/share.html',
         controller: 'ShareCtrl'
       })
+      .when('/location', {
+        templateUrl: 'views/location.html',
+        controller: 'LocationCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -32,6 +38,7 @@ angular
     var loginDetectedFunction = function(response){
       if(response.status == 'connected'){
         facebookservice.setUserId(response.authResponse.userID);
+        facebookservice.setUserAccessToken(response.authResponse.accessToken);
         $rootScope.$apply(function(){
           $location.path('/main');
         });

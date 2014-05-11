@@ -41,7 +41,7 @@ angular.module('shareLocApp')
       $scope.enviarMarca = !$scope.enviarMarca;
     };
 
-    $('#share-loc-map').height($window.innerHeight-111);
+    $('#share-loc-map').height($window.innerHeight-114);
     Coordenadaservice.getUserPosition().then(function(position){
       shareLocMap = new GMaps({
         div: '#share-loc-map',

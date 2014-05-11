@@ -14,7 +14,15 @@
           <input id="remember" type="checkbox"> Recordar Lugar?
         </label>
 
-        <button type="submit" class="pure-button pure-button-primary">Enviar Lugar</button>
+        <div class="pure-g">
+          <div class="pure-u-1">
+            <div class="friend-box" ng-repeat="friend in friends">
+              <img ng-src="{{friend.img_url}}"/>
+              <p class="friend-name">{{friend.name}}</p>
+              <button class="pure-button pure-button-primary share-button" ng-click="enviarMensaje(friend)">Seleccionar</button>
+            </div>
+          </div>
+        </div>
       </fieldset>
     </form>
   </div>
