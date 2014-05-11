@@ -27,7 +27,7 @@ angular
         templateUrl: 'views/share.html',
         controller: 'ShareCtrl'
       })
-      .when('/location', {
+      .when('/location/:lat/:lng', {
         templateUrl: 'views/location.html',
         controller: 'LocationCtrl'
       })
@@ -39,9 +39,11 @@ angular
       if(response.status == 'connected'){
         facebookservice.setUserId(response.authResponse.userID);
         facebookservice.setUserAccessToken(response.authResponse.accessToken);
-        $rootScope.$apply(function(){
-          $location.path('/main');
-        });
+        if($location.path().indexOf('location')===-1){
+          $rootScope.$apply(function(){
+            $location.path('/main');
+          });
+        }
       } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
       } else {

@@ -14,6 +14,7 @@ angular.module('shareLocApp')
       }
       if($scope.enviarMarca){
         $rootScope.$apply(function(){
+          Coordenadaservice.setLocacionEnviar(marker.getPosition());
           $location.path('/share');
         });
       }
